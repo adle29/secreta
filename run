@@ -1,0 +1,5 @@
+#!/bin/sh
+cd logs
+rm *.txt
+cd ..
+python3 sniff.py 
