@@ -22,11 +22,11 @@ stop_test = False
 browser = TorBrowserDriver("/usr/bin/tor-browser/")
 
 urls = {
-	# "wikipedia": "https://www.wikipedia.org/", 
+	"wikipedia": "https://www.wikipedia.org/", 
 	"wiki1": "https://en.wikipedia.org/wiki/World_War_II",
-	# "wiki2": "https://en.wikipedia.org/wiki/October_2016_Dyn_cyberattack",
-	# "wiki3": "https://en.wikipedia.org/wiki/Soviet_Union",
-	# "yahoo" : "https://www.yahoo.com/"
+	"wiki2": "https://en.wikipedia.org/wiki/October_2016_Dyn_cyberattack",
+	"wiki3": "https://en.wikipedia.org/wiki/Soviet_Union",
+	"yahoo" : "https://www.yahoo.com/"
 	}
 
 class SThread(threading.Thread):
@@ -45,19 +45,33 @@ class SThread(threading.Thread):
 
 def recollect_data(): 
 	global stop_test
+	# profile = webdriver.FirefoxProfile('/root/.mozilla/firefox/ukuk696t.default/')
+	# profile.set_preference('network.proxy.type', 1)
+	# profile.set_preference('network.proxy.socks', '127.0.0.1')
+	# profile.set_preference('network.proxy.socks_port', 9150)
+	# browser = webdriver.Firefox(profile)
+	# browser.get('https://check.torproject.org/')
 
 	for page in urls.keys(): 
 		print("Request to %s" % page)
-
+		#end = dt.now() + timedelta(seconds=wait_time)
 		urlPath = urls[page]
+		#make threads 
 		sniffer_thread = SThread(target=get_capture, args=(page,))
 		sniffer_thread.start()
 		request_thread = SThread(target=web_request, args=(urlPath,))
 		request_thread.start()
 		
+		#wait until t10 seconds 
+		# now = dt.now()
+		# while (end - now).total_seconds() > 0: 
 		seconds = 0
+		#progress = pb.ProgressBar(widgets=[Percentage(), Bar()], maxval = wait_time).start()
 		while stop_test == False:#seconds <= wait_time:
 			pass
+			#progress.update(seconds)
+			#sleep(1)
+			#seconds += 1	
 		stop_test = False
 		#progress.update(wait_time)
 		print()
@@ -72,11 +86,18 @@ def recollect_data():
 
 def web_request(url):
 	global stop_test
+	# profile = webdriver.FirefoxProfile('/root/.mozilla/firefox/ukuk696t.default/')
+	# profile.set_preference('network.proxy.type', 1)
+	# profile.set_preference('network.proxy.socks', '127.0.0.1')
+	# profile.set_preference('network.proxy.socks_port', 9150)
+	# browser = webdriver.Firefox(profile)
+	# browser.get('https://check.torproject.org/')
+    	#browser.get('https://check.torproject.org')
+
 	try:
 		browser.get(url)
 		#browser.quit()
 		sleep(1)
-		browser.close()
 		stop_test = True 
 	except Exception as e:
 		print(e)
@@ -87,8 +108,15 @@ def get_capture(page):
 		filepath = "/root/Desktop/kali/fri_2/logs/"+page+".txt"
 		capture = pyshark.LiveCapture(interface='eth0')
 		capture.sniff(packet_count=10)
+		end = dt.now() + timedelta(seconds=wait_time)
 	
 		def print_packet(pkt):
+			#print data
+			#print("sniffing "+ str(page))
+			# now = dt.now()
+			# if (end - now).total_seconds() <= 0:
+			# 	capture.close()
+
 			try:
 				filename = open(filepath, "a+")
 				protocol =  pkt.transport_layer
