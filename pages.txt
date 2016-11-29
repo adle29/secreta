@@ -1,0 +1,11 @@
+# "https://en.wikipedia.org/wiki/October_2016_Dyn_cyberattack" --- wikipage1
+# "https://en.wikipedia.org/wiki/Soviet_Union" --- wikipage2
+# "https://en.wikipedia.org/wiki/World_War_II" --- wikipage3 
+# "https://www.yahoo.com/" --- yahoo 
+# "http://inverarteartgallery.com/" --- inverarte
+# "https://www.amazon.com/" --- amazon
+# "http://www.utexas.edu/" --- utexas
+# "http://www.ign.com/" ---- ign
+# "http://www.sparknotes.com/lit/twocities/section2.rhtml" ---sparknotes
+# "https://defcon.ru/" --- defcon
+# "http://www.cnn.com/" --- cnn

@@ -116,3 +116,33 @@ with TorBrowserDriver("/usr/bin/tor-browser/") as browser:
 
 # if __name__ == "__main__":
 # 	main()
+
+
+#get_capture()
+
+# for packet in capture.sniff_continuously(packet_count=5):
+#     print ('Just arrived:', packet)
+
+
+# >>> capture = pyshark.RemoteCapture('192.168.69.169', 'eth0')
+# >>> capture.sniff(timeout=50)
+# >>> capture
+# https://github.com/KimiNewt/pyshark
+
+# capture = pyshark.RemoteCapture('192.168.69.169', 'eth0')
+# capture.sniff(timeout=50)
+
+# for packet in capture.sniff_continuously(packet_count=5):
+#     print ('Just arrived:', packet)
+
+# for pack in capture:
+# 	print(pack.transport_layer)
+
+# def print_dns_info(pkt):
+#     if pkt.dns.qry_name:
+#         print ('DNS Request from %s: %s' % (pkt.ip.src, pkt.dns.qry_name))
+#     elif pkt.dns.resp_name:
+#         print ('DNS Response from %s: %s' % (pkt.ip.src, pkt.dns.resp_name))
+ 
+# ['delta', 'destination', 'info', 'ip id', 'length', 'no', 
+# 'protocol', 'source', 'stream', 'summary_line', 'time', 'window']

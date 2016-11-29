@@ -33,3 +33,6 @@ cap.sniff(packet_count=50)
 
 #https://en.wikipedia.org/wiki/Hello
 #https://www.nytimes.com
+
+
+normalized timestamp, packet length, destination ip, port 
