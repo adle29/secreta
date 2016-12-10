@@ -10,10 +10,14 @@ from sklearn import svm
 import matplotlib.pyplot as plt
 from random import randint
 
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
 
 # Variables
-trials = 3000
+trials = 1000
 classifier = svm.SVC(kernel = 'linear')
+# classifier = GaussianNB()
+# classifier = KNeighborsClassifier(1)
 
 # Helper functions
 def parse_timestamp(timestamp):
@@ -76,7 +80,8 @@ for filename in glob('data/*'):
     else:
       num = len(url_to_nums)
       url_to_nums[url] = num
-      
+      print(num, url)
+
     all_file_url_num.append(num)
 
     # process the file
@@ -143,9 +148,7 @@ X = np.array([param for param in url_num_to_params.values()])
 # Y is all the URL IDs
 y = [url_num for url_num in url_num_to_params]
 
-fit = classifier.fit(X, y)
-
-# TODO: i haven't really looked much beyond this point
+#fit = classifier.fit(X, y)
 
 print(4)
 
@@ -155,7 +158,7 @@ actuals, predicted = [], []
 for i in range(0, trials):
 	print(i)
 	X_train, X_test, y_train, y_test = train_test_split(all_file_params, all_file_url_num, random_state = i)
-	y_pred = fit.predict(X_test)
+	y_pred = classifier.fit(X_train, y_train).predict(X_test)
 	actuals.extend(y_test)
 	predicted.extend(y_pred)
 
