@@ -1,0 +1,4 @@
+cd data
+rm -r *
+cd /tmp
+rm -r *

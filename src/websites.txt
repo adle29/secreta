@@ -1,0 +1,17 @@
+imbd, https://www.imdb.com/
+pornhub, https://www.pornhub.com
+imgur, https://www.imgur.com
+apple, https://www.apple.com
+netflix, https://www.netflix.com
+mailru, https://www.mailru.com
+office, https://www.office.com/
+paypal, https://www.paypal.com/
+adobe, https://www.adobe.com/
+dropbox, https://www.dropbox.com/
+blogger, https://www.blogger.com/
+ask, https://www.ask.com/
+craigslist, https://www.craigslist.org
+whatsapp, https://www.whatsapp.com
+vimeo, https://www.vimeo.com
+espn, https://www.espn.com
+slideshare, https://www.slideshare.net
